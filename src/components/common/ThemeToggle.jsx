@@ -49,7 +49,7 @@ const ThemeToggle = () => {
             <ToggleThumb
                 theme={theme}
                 initial={false}
-                animate={{ x: theme === 'dark' ? 0 : 28 }}
+                animate={{ x: theme === 'dark' ? 0 : 1 }}
                 transition={{ type: 'spring', stiffness: 500, damping: 30 }}
             >
                 {theme === 'dark' ? '🌙' : '☀️'}
