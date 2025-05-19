@@ -172,11 +172,11 @@ const Skills = () => {
     // Programming skills with proficiency levels
     const programmingSkills = [
         { name: "Python", level: 90 },
-        { name: "Java", level: 80 },
-        { name: "Go", level: 70 },
-        { name: "JavaScript", level: 75 },
-        { name: "TypeScript", level: 70 },
-        { name: "Dart", level: 65 }
+        { name: "Java", level: 60 },
+        { name: "Go", level: 50 },
+        { name: "JavaScript", level: 50 },
+        { name: "TypeScript", level: 50 },
+        { name: "Dart", level: 80 }
     ];
 
     // Database skills
@@ -188,26 +188,26 @@ const Skills = () => {
 
     // Cloud skills
     const cloudSkills = [
-        { name: "AWS S3", level: 85 },
+        { name: "AWS S3", level: 75 },
         { name: "AWS Lambda", level: 80 },
-        { name: "AWS Glue", level: 75 },
+        { name: "AWS Glue", level: 85 },
         { name: "QuickSight", level: 70 }
     ];
 
     // Frameworks and tools
     const frameworksTools = [
-        { name: "Flutter", level: 75 },
-        { name: "Django", level: 80 },
+        { name: "Flutter", level: 85 },
+        { name: "Django", level: 70 },
         { name: "Flask", level: 75 },
-        { name: "PySpark", level: 70 },
-        { name: "Docker", level: 75 },
+        { name: "PySpark", level: 80 },
+        { name: "Docker", level: 85 },
         { name: "Git", level: 85 }
     ];
 
     // Operating systems
     const operatingSystems = [
         { name: "Linux (Fedora)", level: 85 },
-        { name: "Linux (Debian)", level: 80 }
+        { name: "Linux (Debian)", level: 70 }
     ];
 
     // Interpersonal skills
