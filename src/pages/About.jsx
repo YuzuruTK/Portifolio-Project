@@ -2,8 +2,14 @@ import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
 const AboutContainer = styled.div`
-    max-width: 800px;
+    max-width: 600px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 100vh; /* Optional: to center vertically within viewport */
 `;
 
 const SectionTitle = styled.h2`
@@ -11,16 +17,21 @@ const SectionTitle = styled.h2`
 `;
 
 const AboutContent = styled.div`
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    
     @media (min-width: 768px) {
         grid-template-columns: 1fr 1fr;
     }
 `;
 
 const AboutText = styled(motion.div)`
+    justify-items: center;
+    align-items: center;
+    text-align: justify;
+
+    @media (min-width: 768px) {
+    text-align: center;
+    }
+
+
     p {
         margin-bottom: 1.5rem;
         line-height: 1.8;
@@ -72,10 +83,8 @@ const About = () => {
     };
 
     return (
-        <AboutContainer as={motion.div} variants={containerVariants} initial="hidden" animate="visible">
+        <AboutContainer as={motion.div} variants={containerVariants} initial="hidden" animate="visible" >
             <SectionTitle as={motion.h2} variants={itemVariants}>About Me</SectionTitle>
-
-            <AboutContent>
                 <AboutText variants={itemVariants}>
                     <p>
                         I'm Gabriel Buron, a backend-focused developer with expertise in data engineering and data analysis.
@@ -94,40 +103,6 @@ const About = () => {
                         processing requirements while maintaining high performance.
                     </p>
                 </AboutText>
-
-                <PersonalInfo variants={itemVariants}>
-                    <div className="persona-card">
-                        <div className="info-item">
-                            <h3>Location</h3>
-                            <p>Ijui, Rio Grande do Sul, Brasil</p>
-                        </div>
-                        <div className="info-item">
-                            <h3>Email</h3>
-                            <p>gabriel@buron.dev</p>
-                        </div>
-                        <div className="info-item">
-                            <h3>Phone</h3>
-                            <p>(+55) 55 9 9203-2426</p>
-                        </div>
-                        <div className="info-item">
-                            <h3>LinkedIn</h3>
-                            <p>
-                                <a href="https://linkedin.com/in/gabriel-buron" target="_blank" rel="noopener noreferrer">
-                                    linkedin.com/in/gabriel-buron
-                                </a>
-                            </p>
-                        </div>
-                        <div className="info-item">
-                            <h3>GitHub</h3>
-                            <p>
-                                <a href="https://github.com/YuzuruTK" target="_blank" rel="noopener noreferrer">
-                                    github.com/YuzuruTK
-                                </a>
-                            </p>
-                        </div>
-                    </div>
-                </PersonalInfo>
-            </AboutContent>
         </AboutContainer>
     );
 };

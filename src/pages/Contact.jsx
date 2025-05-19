@@ -72,28 +72,30 @@ const Label = styled.label`
 const Input = styled.input`
     width: 100%;
     padding: 0.75rem;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: var(--background);
     border: none;
     color: var(--text);
     font-family: 'Roboto', sans-serif;
+    outline: 2px solid var(--accent);
     
     &:focus {
-        outline: 2px solid var(--accent);
+        outline: 4px inset var(--accent);
     }
 `;
 
 const TextArea = styled.textarea`
     width: 100%;
     padding: 0.75rem;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: var(--background);
     border: none;
     color: var(--text);
     font-family: 'Roboto', sans-serif;
     min-height: 150px;
     resize: vertical;
+    outline: 2px solid var(--accent);
     
     &:focus {
-        outline: 2px solid var(--accent);
+        outline: 4px inset var(--accent);
     }
 `;
 
@@ -208,7 +210,11 @@ const Contact = () => {
 
             <ContactGrid>
                 <ContactInfo variants={itemVariants}>
-                    <div className="persona-card">
+                    <div className="persona-card"> 
+                        <div className="info-item">
+                            <h3>Location</h3>
+                            <p>Rio Grande do Sul, Brasil</p>
+                        </div> 
                         <div className="info-item">
                             <h3>Email</h3>
                             <p>
@@ -222,32 +228,21 @@ const Contact = () => {
                             </p>
                         </div>
                         <div className="info-item">
-                            <h3>Location</h3>
-                            <p>Ijui, Rio Grande do Sul, Brasil</p>
+                            <h3>LinkedIn</h3>
+                            <p>
+                                <a href="https://linkedin.com/in/gabriel-buron" target="_blank" rel="noopener noreferrer">
+                                    linkedin.com/in/gabriel-buron
+                                </a>
+                            </p>
                         </div>
-
-                        <SocialLinks>
-                            <SocialLink
-                                href="https://github.com/YuzuruTK"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                variants={itemVariants}
-                                whileHover={{ scale: 1.1 }}
-                                whileTap={{ scale: 0.95 }}
-                            >
-                                GH
-                            </SocialLink>
-                            <SocialLink
-                                href="https://linkedin.com/in/gabriel-buron"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                variants={itemVariants}
-                                whileHover={{ scale: 1.1 }}
-                                whileTap={{ scale: 0.95 }}
-                            >
-                                LI
-                            </SocialLink>
-                        </SocialLinks>
+                        <div className="info-item">
+                            <h3>GitHub</h3>
+                            <p>
+                                <a href="https://github.com/YuzuruTK" target="_blank" rel="noopener noreferrer">
+                                    github.com/YuzuruTK
+                                </a>
+                            </p>
+                        </div>                    
                     </div>
                 </ContactInfo>
 

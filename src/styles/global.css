@@ -18,13 +18,13 @@
 
 /* Light theme variables */
 [data-theme='light'] {
-    --primary: #FFFFFF;
+    --primary: #FAFAFA;
     --secondary: #F5F5F5;
     --background: #FAFAFA;
     --text: #333333;
-    --accent: #FFD700;
+    --accent: #e9c600;
     --card-bg: #FFFFFF;
-    --nav-bg: #F0F0F0;
+    --nav-bg: #FFFFFF;
 }
 
 * {
