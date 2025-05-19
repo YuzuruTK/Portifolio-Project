@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
 import { useTheme } from '../contexts/ThemeContext';
+import { useNavigate } from 'react-router-dom';
 
 const HomeContainer = styled.div`
     display: flex;
@@ -78,6 +79,7 @@ const BackgroundElement = styled(motion.div)`
 `;
 
 const Home = () => {
+    const navigate = useNavigate();
     const { theme } = useTheme();
 
     const containerVariants = {
@@ -143,7 +145,7 @@ const Home = () => {
                         variants={itemVariants}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        onClick={() => window.location.href = '/about'}
+                        onClick={() => navigate("/about")}
                     >
                         About Me
                     </CTAButton>
@@ -152,7 +154,7 @@ const Home = () => {
                         variants={itemVariants}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        onClick={() => window.location.href = '/contact'}
+                        onClick={() => navigate("/contact")}
                     >
                         Contact
                     </CTAButton>
