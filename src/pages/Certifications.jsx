@@ -120,12 +120,10 @@ const Certifications = () => {
                     <Issuer>AWS</Issuer>
                     <Year>2024</Year>
                     <Description>
-                        The AWS Certified Cloud Practitioner validates foundational knowledge of AWS Cloud architecture,
-                        services, security, and compliance. This certification demonstrates an understanding of AWS
-                        core services, use cases, billing, and pricing models, as well as security concepts and
-                        deployment mechanisms.
+                        Earners of this certification have a fundamental understanding of IT services and their uses in the AWS Cloud. They demonstrated cloud fluency and foundational AWS knowledge.
+                        Badge owners are able to identify essential AWS services necessary to set up AWS-focused projects.
                     </Description>
-                    <CredentialLink href="#" target="_blank" rel="noopener noreferrer">
+                    <CredentialLink href="https://www.credly.com/badges/dea883b2-4c45-4b80-9685-6b82489b6f5b/public_url" target="_blank" rel="noopener noreferrer">
                         View Credential
                     </CredentialLink>
                 </CertificationCard>
@@ -135,12 +133,10 @@ const Certifications = () => {
                     <Issuer>Google Cloud</Issuer>
                     <Year>2025</Year>
                     <Description>
-                        This certification validates expertise in designing effective prompts for AI models in
-                        Google Cloud's Vertex AI platform. It demonstrates proficiency in prompt engineering
-                        techniques, understanding of large language models, and the ability to optimize AI
-                        interactions for various use cases.
+                        Complete the introductory Prompt Design in Vertex AI skill badge to demonstrate skills in the following: prompt engineering, image analysis, and multimodal generative techniques, within Vertex AI.
+                        Discover how to craft effective prompts, guide generative AI output, and apply Gemini models to real-world marketing scenarios.
                     </Description>
-                    <CredentialLink href="#" target="_blank" rel="noopener noreferrer">
+                    <CredentialLink href="https://www.credly.com/badges/9c49bbf3-2738-479b-a050-891c91858e80/public_url" target="_blank" rel="noopener noreferrer">
                         View Credential
                     </CredentialLink>
                 </CertificationCard>
