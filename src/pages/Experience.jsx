@@ -25,7 +25,7 @@ const Timeline = styled.div`
         
         @media (min-width: 768px) {
             left: 50%;
-            transform: translateX(-50%) skewY(-5deg);
+            transform: translateX(-0%) skewY(-5deg);
         }
     }
 `;
@@ -47,7 +47,7 @@ const TimelineItem = styled(motion.div)`
         content: '';
         position: absolute;
         left: -8px;
-        top: 0;
+        top: 50%;
         width: 20px;
         height: 20px;
         border-radius: 50%;

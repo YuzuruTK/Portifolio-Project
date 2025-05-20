@@ -1,11 +1,12 @@
 import { useTheme } from '../../contexts/ThemeContext';
+import Navigation from './Navigation';
 import ThemeToggle from './ThemeToggle';
 import styled from 'styled-components';
 
 const HeaderContainer = styled.header`
     display: flex;
     justify-content: flex-end;
-    align-items: center;
+    align-items: start;
     padding: 1rem 2rem;
     background-color: var(--card-bg);
     position: fixed;
@@ -27,6 +28,7 @@ const Header = () => {
 
     return (
         <HeaderContainer>
+            <Navigation />
             <ThemeToggle />
         </HeaderContainer>
     );

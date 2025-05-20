@@ -48,9 +48,9 @@ const Layout = ({ children }) => {
 
     return (
         <LayoutContainer>
-            <Navigation />
+            {/* <Navigation /> */}
+            <Header />
             <MainContent>
-                <Header />
                 <PageContainer
                     initial="initial"
                     animate="animate"
