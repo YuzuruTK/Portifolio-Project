@@ -1,33 +1,30 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
 import { useTheme } from '../../contexts/ThemeContext';
 
-const NavContainer = styled.nav`
-    display: flex;
-    flex-direction: column;
-    background-color: var(--nav-bg);
-    padding: 1rem;
-    width: 250px;
-    height: 100vh;
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 100;
-    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
-    transform-origin: left center;
+const NavContainer = styled(motion.nav)`
+  display: flex;
+  flex-direction: column;
+  background-color: var(--nav-bg);
+  padding: 1rem;
+  width: 250px;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+  transform-origin: left center;
 
-    @media (max-width: 768px) {
-        width: 100%;
-        height: auto;
-        position: ${props => props.$isOpen ? 'fixed' : 'relative'};
-        transform: ${props => props.$isOpen ? 'translateX(0)' : 'translateX(-100%)'};
-        transition: transform 0.3s ease;
-    }
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
-const NavList = styled.ul`
+
+const NavList = styled.ul`useEffect(() => {
     list-style: none;
     padding: 0;
     margin: 2rem 0;
@@ -133,9 +130,32 @@ const Overlay = styled.div`
     z-index: 99;
 `;
 
+function useWindowSize() {
+  const [size, setSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
+
+  useEffect(() => {
+    function handleResize() {
+      setSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    }
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  return size;
+}
+
 const Navigation = () => {
     const { colors } = useTheme();
     const [isOpen, setIsOpen] = useState(false);
+    
+    const { width } = useWindowSize();
+    const isMobile = width <= 768;
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
@@ -145,18 +165,6 @@ const Navigation = () => {
         setIsOpen(false);
     };
 
-    const navVariants = {
-        hidden: { x: -250 },
-        visible: {
-            x: 0,
-            transition: {
-                type: "spring",
-                stiffness: 400,
-                damping: 40
-            }
-        }
-    };
-
     return (
         <>
             <MobileMenuButton onClick={toggleMenu}>
@@ -164,39 +172,36 @@ const Navigation = () => {
             </MobileMenuButton>
 
             <Overlay $isOpen={isOpen} onClick={closeMenu} />
-
-            <motion.div
-                initial="hidden"
-                animate="visible"
-                variants={navVariants}
+            <NavContainer
+                initial={{ x: isMobile ? '-100%' : '0%' }}
+                animate={{ x: isMobile ? (isOpen ? '0%' : '-100%') : '0%' }}
+                transition={{ type: 'spring', stiffness: 400, damping: 40 }}
             >
-                <NavContainer $isOpen={isOpen}>
-                    <Logo>GB</Logo>
-                    <NavList>
-                        <NavItem>
-                            <StyledNavLink to="/" onClick={closeMenu}>Home</StyledNavLink>
-                        </NavItem>
-                        <NavItem>
-                            <StyledNavLink to="/about" onClick={closeMenu}>About</StyledNavLink>
-                        </NavItem>
-                        <NavItem>
-                            <StyledNavLink to="/experience" onClick={closeMenu}>Experience</StyledNavLink>
-                        </NavItem>
-                        <NavItem>
-                            <StyledNavLink to="/education" onClick={closeMenu}>Education</StyledNavLink>
-                        </NavItem>
-                        <NavItem>
-                            <StyledNavLink to="/skills" onClick={closeMenu}>Skills</StyledNavLink>
-                        </NavItem>
-                        <NavItem>
-                            <StyledNavLink to="/certifications" onClick={closeMenu}>Certifications</StyledNavLink>
-                        </NavItem>
-                        <NavItem>
-                            <StyledNavLink to="/contact" onClick={closeMenu}>Contact</StyledNavLink>
-                        </NavItem>
-                    </NavList>
-                </NavContainer>
-            </motion.div>
+                <Logo>GB</Logo>
+                <NavList>
+                    <NavItem>
+                        <StyledNavLink to="/" onClick={closeMenu}>Home</StyledNavLink>
+                    </NavItem>
+                    <NavItem>
+                        <StyledNavLink to="/about" onClick={closeMenu}>About</StyledNavLink>
+                    </NavItem>
+                    <NavItem>
+                        <StyledNavLink to="/experience" onClick={closeMenu}>Experience</StyledNavLink>
+                    </NavItem>
+                    <NavItem>
+                        <StyledNavLink to="/education" onClick={closeMenu}>Education</StyledNavLink>
+                    </NavItem>
+                    <NavItem>
+                        <StyledNavLink to="/skills" onClick={closeMenu}>Skills</StyledNavLink>
+                    </NavItem>
+                    <NavItem>
+                        <StyledNavLink to="/certifications" onClick={closeMenu}>Certifications</StyledNavLink>
+                    </NavItem>
+                    <NavItem>
+                        <StyledNavLink to="/contact" onClick={closeMenu}>Contact</StyledNavLink>
+                    </NavItem>
+                </NavList>
+            </NavContainer>
         </>
     );
 };
