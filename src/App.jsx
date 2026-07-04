@@ -10,6 +10,7 @@ import Education from './pages/Education';
 import Skills from './pages/Skills';
 import Certifications from './pages/Certifications';
 import Contact from './pages/Contact';
+import Projects from './pages/Projects';
 
 // Import global styles
 import './styles/global.css';
@@ -25,6 +26,7 @@ function App() {
             <Route path="/experience" element={<Experience />} />
             <Route path="/education" element={<Education />} />
             <Route path="/skills" element={<Skills />} />
+            <Route path="/projects" element={<Projects />} />
             <Route path="/certifications" element={<Certifications />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
