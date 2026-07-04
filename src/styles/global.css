@@ -10,6 +10,7 @@
     --accent: #FF5252;
     --card-bg: #1E1E1E;
     --nav-bg: #0A0A0A;
+    color-scheme: dark;
 
     /* Animation variables */
     --transition-speed: 0.3s;
@@ -25,6 +26,7 @@
     --accent: #e9c600;
     --card-bg: #FFFFFF;
     --nav-bg: #FFFFFF;
+    color-scheme: light;
 }
 
 * {
