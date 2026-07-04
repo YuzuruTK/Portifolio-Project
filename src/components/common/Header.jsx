@@ -6,7 +6,7 @@ import styled from 'styled-components';
 const HeaderContainer = styled.header`
     display: flex;
     justify-content: flex-end;
-    align-items: start;
+    align-items: center;
     padding: 1rem 2rem;
     background-color: var(--card-bg);
     position: fixed;
@@ -19,7 +19,7 @@ const HeaderContainer = styled.header`
 
     @media (max-width: 768px) {
         left: 0;
-        justify-content: flex-end;
+        justify-content: space-between;
     }
 `;
 
@@ -28,8 +28,8 @@ const Header = () => {
 
     return (
         <HeaderContainer>
-            <Navigation />
             <ThemeToggle />
+            <Navigation />
         </HeaderContainer>
     );
 };
