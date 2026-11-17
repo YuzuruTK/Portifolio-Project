@@ -18,26 +18,83 @@ const CategoryTitle = styled.h3`
         width: 100%; height: 3px; background-color: var(--accent);
     }
 `;
-const SkillsList = styled.div`display: flex; flex-wrap: wrap; gap: 0.75rem;`;
+const SkillRows = styled.div`display: flex; flex-direction: column; gap: 1rem;`;
+const SkillRow = styled.div`display: flex; flex-direction: column; gap: 0.4rem;`;
+const SkillInfo = styled.div`display: flex; justify-content: space-between; gap: 1rem; font-size: 0.95rem;`;
+const SkillName = styled.span`color: var(--text);`;
+const SkillValue = styled.span`color: var(--accent); font-variant-numeric: tabular-nums;`;
+const ProgressTrack = styled.div`
+    width: 100%; height: 7px; overflow: hidden; border-radius: 999px;
+    background: rgba(255, 255, 255, 0.1);
+`;
+const ProgressFill = styled(motion.div)`
+    height: 100%; border-radius: inherit; background: var(--accent);
+`;
+const SkillTags = styled.div`display: flex; flex-wrap: wrap; gap: 0.65rem;`;
 const SkillTag = styled(motion.span)`
     background-color: var(--card-bg);
     color: var(--text);
-    padding: 0.7rem 1rem;
-    font-size: 0.95rem;
+    padding: 0.6rem 0.85rem;
+    font-size: 0.9rem;
     position: relative;
     &:before {
         content: ''; position: absolute; top: 0; left: 0;
         width: 3px; height: 100%; background-color: var(--accent);
     }
 `;
+const Note = styled.p`font-size: 0.85rem; opacity: 0.7; line-height: 1.5; margin-top: 0.75rem;`;
 
-const categories = [
-    { title: 'Programming Languages', skills: ['Python', 'JavaScript', 'TypeScript', 'Go', 'Java', 'Dart', 'SQL'] },
-    { title: 'Backend & Application Development', skills: ['Node.js', 'Hono', 'Flask', 'Django', 'React', 'Flutter', 'REST APIs', 'MCP'] },
-    { title: 'Databases & Data', skills: ['PostgreSQL', 'DuckDB', 'SQLite', 'Cloudflare D1', 'Pandas', 'PySpark', 'ETL', 'Data Analysis'] },
-    { title: 'Cloud & Infrastructure', skills: ['AWS', 'Cloudflare Workers', 'Docker'] },
-    { title: 'Tools & Platforms', skills: ['Git', 'GitHub', 'Linux', 'Windows'] }
+const languages = [
+    { name: 'TypeScript', value: 76.8 },
+    { name: 'JavaScript', value: 8.9 },
+    { name: 'Python', value: 8.3 },
+    { name: 'SQL', value: 4.0 },
+    { name: 'CSS', value: 1.6 },
+    { name: 'HTML', value: 0.4 }
 ];
+
+const technologies = [
+    {
+        title: 'Frameworks & Application Development',
+        skills: [
+            { name: 'React', value: '50%' },
+            { name: 'Node.js', value: '50%' },
+            { name: 'Hono', value: '25%' },
+            { name: 'Flask / Django', value: 'Academic experience' },
+            { name: 'Flutter', value: 'Academic experience' },
+            { name: 'MCP', value: '25%' }
+        ]
+    },
+    {
+        title: 'Databases & Data',
+        skills: [
+            { name: 'SQL databases & migrations', value: '75%' },
+            { name: 'Cloudflare D1', value: '50%' },
+            { name: 'DuckDB', value: '25%' },
+            { name: 'SQLite', value: '25%' },
+            { name: 'Pandas / PySpark', value: '25%' },
+            { name: 'ETL & data pipelines', value: '50%' }
+        ]
+    },
+    {
+        title: 'Cloud & Infrastructure',
+        skills: [
+            { name: 'Cloudflare Workers', value: '50%' },
+            { name: 'Docker', value: '25%' },
+            { name: 'AWS', value: 'Professional experience' },
+            { name: 'REST APIs', value: '75%' }
+        ]
+    },
+    {
+        title: 'Tools & Platforms',
+        skills: [
+            { name: 'Git & GitHub', value: 'All projects' },
+            { name: 'Linux', value: 'Regular use' },
+            { name: 'Windows', value: 'Regular use' }
+        ]
+    }
+];
+
 const interpersonalSkills = ['Analytical Thinking', 'Problem Solving', 'Teamwork', 'Communication', 'Adaptability'];
 
 const Skills = () => {
@@ -53,28 +110,47 @@ const Skills = () => {
     return (
         <SkillsContainer as={motion.div} variants={containerVariants} initial="hidden" animate="visible">
             <SectionTitle as={motion.h2} variants={itemVariants}>Technical Skills</SectionTitle>
+            <SkillCategory variants={itemVariants}>
+                <CategoryTitle>Programming Languages</CategoryTitle>
+                <SkillRows>
+                    {languages.map(language => (
+                        <SkillRow key={language.name}>
+                            <SkillInfo>
+                                <SkillName>{language.name}</SkillName>
+                                <SkillValue>{language.value}%</SkillValue>
+                            </SkillInfo>
+                            <ProgressTrack>
+                                <ProgressFill initial={{ width: 0 }} animate={{ width: `${language.value}%` }} transition={{ duration: 0.8 }} />
+                            </ProgressTrack>
+                        </SkillRow>
+                    ))}
+                </SkillRows>
+                <Note>Estimated from relative lines of code across selected portfolio projects; generated files and dependencies are excluded.</Note>
+            </SkillCategory>
             <SkillsGrid>
-                {categories.map(category => (
+                {technologies.map(category => (
                     <SkillCategory key={category.title} variants={itemVariants}>
                         <CategoryTitle>{category.title}</CategoryTitle>
-                        <SkillsList>
-                            {category.skills.map(skill => <SkillTag key={skill} variants={itemVariants}>{skill}</SkillTag>)}
-                        </SkillsList>
+                        <SkillTags>
+                            {category.skills.map(skill => (
+                                <SkillTag key={skill.name}>{skill.name} · {skill.value}</SkillTag>
+                            ))}
+                        </SkillTags>
                     </SkillCategory>
                 ))}
             </SkillsGrid>
             <SkillCategory variants={itemVariants}>
                 <CategoryTitle>Interpersonal Skills</CategoryTitle>
-                <SkillsList>
-                    {interpersonalSkills.map(skill => <SkillTag key={skill} variants={itemVariants}>{skill}</SkillTag>)}
-                </SkillsList>
+                <SkillTags>
+                    {interpersonalSkills.map(skill => <SkillTag key={skill}>{skill}</SkillTag>)}
+                </SkillTags>
             </SkillCategory>
             <SkillCategory variants={itemVariants}>
                 <CategoryTitle>Languages</CategoryTitle>
-                <SkillsList>
-                    <SkillTag variants={itemVariants}>Portuguese · Native</SkillTag>
-                    <SkillTag variants={itemVariants}>English · Advanced</SkillTag>
-                </SkillsList>
+                <SkillTags>
+                    <SkillTag>Portuguese · Native</SkillTag>
+                    <SkillTag>English · Advanced</SkillTag>
+                </SkillTags>
             </SkillCategory>
         </SkillsContainer>
     );
