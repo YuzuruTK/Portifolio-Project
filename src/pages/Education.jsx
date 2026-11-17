@@ -25,12 +25,25 @@ const Institution = styled.h4`font-size: 1.1rem; margin-bottom: 0.5rem;`;
 const Period = styled.p`font-size: 0.9rem; margin-bottom: 1rem; opacity: 0.8;`;
 const Location = styled.p`font-size: 0.9rem; margin-bottom: 1.5rem; font-style: italic;`;
 const Description = styled.p`line-height: 1.6;`;
-const Coursework = styled.div`
-    margin-top: 2rem;
-    h3 { color: var(--accent); margin-bottom: 1rem; }
-    ul { display: flex; flex-wrap: wrap; gap: 0.6rem; list-style: none; padding: 0; }
-    li { background: var(--card-bg); padding: 0.55rem 0.85rem; font-size: 0.9rem; }
+const AwardsList = styled.ul`
+    list-style: none;
+    padding: 0;
+    li {
+        background: var(--card-bg);
+        border-left: 3px solid var(--accent);
+        padding: 0.9rem 1rem;
+        margin-bottom: 0.75rem;
+        line-height: 1.5;
+    }
 `;
+
+const awards = [
+    '1st place — Unijuí Programming Marathon (2026)',
+    '10th place — SBC RS Super-Regional (2025)',
+    'Winning placements — Unijuí Warmup (2025)',
+    'National participant — SBC Programming Contest (2024)',
+    '1st place — Unijuí Warmup (2024)'
+];
 
 const Education = () => {
     const containerVariants = {
@@ -67,14 +80,12 @@ const Education = () => {
                     </Description>
                 </EducationCard>
             </EducationGrid>
-            <Coursework>
-                <h3>Relevant Coursework</h3>
-                <ul>
-                    {['Data Structures', 'Algorithms', 'Database Systems', 'Software Engineering', 'Operating Systems', 'Computer Networks'].map(item => (
-                        <li key={item}>{item}</li>
-                    ))}
-                </ul>
-            </Coursework>
+            <section style={{ marginTop: '2.5rem' }}>
+                <SectionTitle as="h3">Awards & Competitions</SectionTitle>
+                <AwardsList>
+                    {awards.map(award => <li key={award}>{award}</li>)}
+                </AwardsList>
+            </section>
         </EducationContainer>
     );
 };
