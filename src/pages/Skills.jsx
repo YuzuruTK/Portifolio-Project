@@ -45,12 +45,10 @@ const SkillTag = styled(motion.span)`
 const Note = styled.p`font-size: 0.85rem; opacity: 0.7; line-height: 1.5; margin-top: 0.75rem;`;
 
 const languages = [
-    { name: 'TypeScript', value: 76.8 },
-    { name: 'JavaScript', value: 8.9 },
-    { name: 'Python', value: 8.3 },
-    { name: 'SQL', value: 4.0 },
-    { name: 'CSS', value: 1.6 },
-    { name: 'HTML', value: 0.4 }
+    { name: 'SQL', value: 100 },
+    { name: 'TypeScript', value: 75 },
+    { name: 'JavaScript', value: 50 },
+    { name: 'Python', value: 25 }
 ];
 
 const technologies = [
@@ -58,37 +56,40 @@ const technologies = [
         title: 'Frameworks & Application Development',
         skills: [
             { name: 'React', value: '50%' },
-            { name: 'Node.js', value: '50%' },
+            { name: 'Vite', value: '50%' },
+            { name: 'Zod', value: '50%' },
+            { name: 'Node.js', value: '25%' },
             { name: 'Hono', value: '25%' },
-            { name: 'Flask / Django', value: 'Academic experience' },
-            { name: 'Flutter', value: 'Academic experience' },
+            { name: 'Drizzle ORM', value: '25%' },
             { name: 'MCP', value: '25%' }
         ]
     },
     {
         title: 'Databases & Data',
         skills: [
-            { name: 'SQL databases & migrations', value: '75%' },
+            { name: 'SQL databases & migrations', value: '100%' },
+            { name: 'ETL & data pipelines', value: '50%' },
             { name: 'Cloudflare D1', value: '50%' },
             { name: 'DuckDB', value: '25%' },
             { name: 'SQLite', value: '25%' },
-            { name: 'Pandas / PySpark', value: '25%' },
-            { name: 'ETL & data pipelines', value: '50%' }
+            { name: 'Biopython', value: '25%' },
+            { name: 'scikit-learn', value: '25%' }
         ]
     },
     {
-        title: 'Cloud & Infrastructure',
+        title: 'Cloud, APIs & Infrastructure',
         skills: [
+            { name: 'REST APIs', value: '100%' },
             { name: 'Cloudflare Workers', value: '50%' },
-            { name: 'Docker', value: '25%' },
-            { name: 'AWS', value: 'Professional experience' },
-            { name: 'REST APIs', value: '75%' }
+            { name: 'Docker', value: '25%' }
         ]
     },
     {
-        title: 'Tools & Platforms',
+        title: 'Web & Development Tools',
         skills: [
-            { name: 'Git & GitHub', value: 'All projects' },
+            { name: 'HTML', value: '75%' },
+            { name: 'CSS', value: '75%' },
+            { name: 'Git & GitHub', value: '100%' },
             { name: 'Linux', value: 'Regular use' },
             { name: 'Windows', value: 'Regular use' }
         ]
@@ -125,7 +126,7 @@ const Skills = () => {
                         </SkillRow>
                     ))}
                 </SkillRows>
-                <Note>Estimated from relative lines of code across selected portfolio projects; generated files and dependencies are excluded.</Note>
+                <Note>Percentages represent the share of selected projects (Meteo-data, Zoho Personal Integration, FASTA2GO and Thought Box API) where each language or technology is used. TypeScript includes TSX. These figures indicate project coverage, not proficiency.</Note>
             </SkillCategory>
             <SkillsGrid>
                 {technologies.map(category => (
